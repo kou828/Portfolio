@@ -41,3 +41,7 @@ var app3 = new Vue({
         ]
     }
 })
+
+Vue.component('introductionArea',{
+    template: '<h1></h1>'
+});
