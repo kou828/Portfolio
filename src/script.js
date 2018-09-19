@@ -1,47 +1,18 @@
-var app = new Vue({
-    el: '#app',
-    
-    data: {
-        seen:true,
-        todos:[
-            { text: '1' },
-            { text: '2' },
-            { text: '3' }
-        ]
-    }
-     ,methods: {
-        reverseMessage: function () {
-            this.todos.push({text:"222"});
-        }
-    }
-})
-
-var app2 = new Vue({
-    el: '#app2',
-
-    data: {
-        message: 'hoge',
-    }
-})
-
-// todo-item と呼ばれる新しいコンポーネントを定義
-Vue.component('todo-item', {
-    props:['todo']
-    , template: '<li>{{ todo.text }}</li>'
-})
-
-// コンポーネント呼び出し
-var app3 = new Vue({
-    el: '#app3'
-    ,data: {
-        groceryList: [ 
-            {id : 0, text: 'aaa'}
-            , { id: 3, text: 'vvv' }
-            , { id: 2, text: 'ccc' }
-        ]
-    }
-})
-
-Vue.component('introductionArea',{
-    template: '<h1></h1>'
+Vue.component('cmp-proficiency', {
+    template: `
+        <div> 習熟度 </div> 
+        <table>
+            <tr>
+                <td>★★★</td> 
+                <td> ：業務経験有 </td> 
+                <td> ★★☆ < /td> 
+                <td> ：趣味でよく利用 </td> 
+                <td> ★☆☆ < /td> 
+                <td> ：学習はしたが、 実戦経験ほぼなし < /td> 
+            </tr> 
+        </table>`
 });
+
+var proficiency = new Vue({
+    el: '#proficiency',
+})

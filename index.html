@@ -3,7 +3,7 @@
         <!-- vue.js -->
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         
-        <!-- j Query -->
+        <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
         
         <!-- boot strap -->
@@ -17,18 +17,9 @@
         <div id="introduction">
             <h1>Profile</h1>
             <h2>My Skills</h2>
-            <div>習熟度</div>
-            <table>
-                <tr>
-                    <td>★★★</td>
-                    <td>：業務経験有</td>
-                    <td>　★★☆</td>
-                    <td>：趣味でよく利用</td>
-                    <td>　★☆☆</td>
-                    <td>：学習はしたが、実戦経験ほぼなし</td>
-                </tr>
-            </table>
-
+            <div id ="proficiency">
+                <cmp-proficiency></cmp-proficiency>
+            </div>
             <div>プログラミング言語</div>
             <table>
                 <tr>
@@ -64,7 +55,7 @@
             </table>
 
             <div>フレームワーク・API</div>
-            <table>
+            <table class="table table-striped">
                 <tr>
                     <td>jQuery</td>
                     <td>★★★</td>
@@ -106,6 +97,7 @@
 
             <h1>Works</h1>
             <h2>業務経歴</h2>
+            <div>準備中</div>
             <h1>Products</h1>
             <h2>個人で作成した制作物等</h2>
             <h3>Title</h3>
@@ -115,7 +107,6 @@
             <h3>Overview:</h3>
             <div>Unity 1週間ゲームジャムに提出した作品です。</div>
             <div>2Dの横スクロールのアクションゲームです。</div>
-            <div>2日</div>
             <h3>製作期間:</h3>
             <div>2日</div>
         </div>
