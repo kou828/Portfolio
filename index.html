@@ -21,19 +21,22 @@
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" vintegrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
     </head>
     <body class="bg-light">
-        <!-- ヘッダー情報-->
+        <!-- ヘッダエリア -->
         <header class="bg-light pt-4 pb-4">
             <div class="container">
                     <div class="navbar-header row">
-                        <a class="navbar-brand text-dark col-md-3 ml-4" href="#">baudoのゲーム置き場</a>
-                        <button type="button" class="btn btn-primary col-md-2 ml-1">Info</button>
-                        <button type="button" class="btn btn-primary col-md-3 ml-1">Games</button>
-                        <button type="button" class="btn btn-primary col-md-3 ml-1">Products</button>
+                        <!-- タイトルロゴ -->
+                        <a class="navbar-brand text-dark col-md-3 ml-4" href="#"><img border="0" src="img/logo.png" width="180" height="40" alt="img1"></a>
+                        <button id="infoButton" type="button" class="btn btn-primary col-md-2 ml-1">Info</button>
+                        <button id="gamesButton" type="button" class="btn btn-primary col-md-3 ml-1">Games</button>
+                        <button id="productsButton" type="button" class="btn btn-primary col-md-3 ml-1" disabled>Products</button>
                     </div>
             </div>
         </header>
-        <article>
-            <section class="container bg-white rounded-bottom">
+        <!-- メインエリア -->
+        <article id="mainArea" style="display:none">
+            <!-- INFO -->
+            <section id="info" class="container bg-white rounded-bottom">
                 <div class="row bg-warning rounded-top">
                     <div class="col-md-12">
                         <p class="h2">Info</p>
@@ -42,7 +45,7 @@
                 <div class="row pt-2">
                     <div class="col-md-8">
                         <!--プロフィール -->
-                        <section id="info" class="container">
+                        <section class="container">
                             <div class="row">
                                 <div class="col-md-8">
                                     baudoが作成したゲームやコンテンツ等を置いておく場所
@@ -61,7 +64,7 @@
                                     Twitter
                                 </div>
                                 <div class="col-md-2">
-                                    <a  href="https://twitter.com/baudo_pixel">https://twitter.com/baudo_pixel</a>
+                                    <a href="https://twitter.com/baudo_pixel">https://twitter.com/baudo_pixel</a>
                                 </div>
                             </div>  
                         </section>
@@ -72,23 +75,150 @@
                     </div>
                 </div>
             </section>
-  
             
-
-            <!-- 個人製作物        
-            <section>
-                <h1>Products</h1>
-                <h2>個人で作成した制作物等</h2>
-                <h3>Title</h3>
-                <div>FireRunner</div>
-                <h3>URL:</h3>
-                <a src="https://unityroom.com/games/fire_runner">https://unityroom.com/games/fire_runner</a>
-                <h3>Overview:</h3>
-                <div>Unity 1週間ゲームジャムに提出した作品です。</div>
-                <div>2Dの横スクロールのアクションゲームです。</div>
-                <h3>製作期間:</h3>
-                <div>2日</div>
-            </section>-->
+            <!-- ゲーム -->    
+            <section id="games" class="container bg-white rounded-bottom">
+                <div class="row bg-warning rounded-top">
+                    <div class="col-md-12">
+                        <p class="h2">Games</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <hr class="col-md-11" style="border: 0; border-bottom: 1px dashed #ccc; background: #999;">
+                </div>
+                <!--  -->
+                <div class="row">
+                    <!-- 仕切り線 -->
+                    <div class="col-md-3">
+                        <div class="col-md-3"><img border="0" src="img/ZundaWarImage.png" width="220" height="130" alt="イラスト1"></div>
+                    </div>
+                    <!-- ずんだWAR -->
+                    <div class="col-md-9">
+                        <div class="row pt-2">
+                            <div class="col-md-2">Title</div>
+                            <div class="col-md-2">ずんだWAR</div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-md-2">URL</div>
+                            <div class="col-md-7"><a href="https://baudo.itch.io/zunda-war" target="_blank">https://baudo.itch.io/zunda-war</a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">Overview</div>
+                            <div class="col-md-7"><a href="https://itch.io/jam/voicegamejam2" target="_blank">VOICEゲームジャム2</a>提出作品です。</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">ジャンル</div>
+                            <div class="col-md-7">シミュレーション</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">製作期間</div>
+                            <div class="col-md-7">2018/12/21 〜 2018/12/30</div>
+                        </div>
+                    </div>
+                </div> 
+                <!-- 仕切り線 -->
+                <div class="row">
+                    <hr class="col-md-11" style="border: 0; border-bottom: 1px dashed #ccc; background: #999;">
+                </div>
+                <!-- テンパズッ！！ -->
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="col-md-3"><img border="0" src="img/tenpaz.png" width="220" height="130" alt="イラスト1"></div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row pt-2">
+                            <div class="col-md-2">Title</div>
+                            <div class="col-md-7">テンパズッ！！</div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-md-2">URL</div>
+                            <div class="col-md-7"><a href="https://unityroom.com/games/tenpaz" target="_blank">https://unityroom.com/games/tenpaz</a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">Overview</div>
+                            <div class="col-md-7"><a href="https://unityroom.com/unity1weeks/11" target="_blank">第10回 Unity1週間ゲームジャム</a>提出作品です。</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">ジャンル</div>
+                            <div class="col-md-7">パズル</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">製作期間</div>
+                            <div class="col-md-7">2018/11/19 〜 2018/11/25</div>
+                        </div>
+                    </div>
+                </div> 
+                <!-- 仕切り線 -->
+                <div class="row">
+                    <hr class="col-md-11" style="border: 0; border-bottom: 1px dashed #ccc; background: #999;">
+                </div>
+                <!-- きずなあかりのおおぐいきょうそう！-->
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="col-md-3"><img border="0" src="img/akariOgui.png" width="220" height="130" alt="イラスト1"></div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row pt-2">
+                            <div class="col-md-2">Title</div>
+                            <div class="col-md-7">きずなあかりのおおぐいきょうそう！</div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-md-2">URL</div>
+                            <div class="col-md-7"><a href="https://baudo.itch.io/akari-ogui" target="_blank">https://baudo.itch.io/akari-ogui</a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">Overview</div>
+                            <div class="col-md-7"><a href="https://itch.io/jam/voiceroid-game-jam" target="_blank">ボイロゲームジャム</a>提出作品です。</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">ジャンル</div>
+                            <div class="col-md-7">アクション</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">製作期間</div>
+                            <div class="col-md-7">2018/10/14 〜 2018/10/28</div>
+                        </div>
+                    </div>
+                </div> 
+                <!-- 仕切り線 -->
+                <div class="row">
+                    <hr class="col-md-11" style="border: 0; border-bottom: 1px dashed #ccc; background: #999;">
+                </div>
+                <!-- Fire Runner -->
+                <div class="row">
+                    <!-- 画像 -->
+                    <div class="col-md-3">
+                        <div class="col-md-3"><img border="0" src="img/fireRunner.png" width="220" height="130" alt="イラスト1"></div>
+                    </div>
+                    <!-- text -->
+                    <div class="col-md-9">
+                        <div class="row pt-2">
+                            <div class="col-md-2">Title</div>
+                            <div class="col-md-2">FireRunner</div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-md-2">URL</div>
+                            <div class="col-md-7"><a href="https://unityroom.com/games/fire_runner" target="_blank">https://unityroom.com/games/fire_runner</a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">Overview</div>
+                            <div class="col-md-7">初制作のゲーム。<a href="https://unityroom.com/unity1weeks/10" target="_blank">第9回 Unity1週間ゲームジャム</a>提出作品です。</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">ジャンル</div>
+                            <div class="col-md-7">2D横スクロールアクション</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">製作期間</div>
+                            <div class="col-md-7">2018/09/03 〜 2018/09/09</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 仕切り線 -->
+                <div class="row">
+                    <hr class="col-md-11" style="border: 0; border-bottom: 1px dashed #ccc; background: #999;">
+                </div>  
+            </section>
         </article>　
         <footer class="fixed-bottom bg-secondary">
             _
