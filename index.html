@@ -1,228 +1,351 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <!-- title -->
-        <title>PASTEL FOX</title>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PASTEL FOX</title>
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --pastel-pink: #FF9E9E;
+            --pastel-blue: #9EB4FF;
+            --pastel-yellow: #FFE79E;
+            --soft-gray: #f8f9fa;
+        }
 
-        <!-- mata tag -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        body {
+            padding-top: 76px;
+            padding-bottom: 56px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--soft-gray);
+        }
 
-        <!-- vue.js -->
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1030;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.9) !important;
+        }
 
-        <!-- jQuery・boot strap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem 0;
+        }
 
-        <!-- jQuery UI -->
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" vintegrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
-    </head>
-    <body class="bg-light">
-        <!-- ヘッダエリア -->
-        <header class="bg-light pt-4 pb-4">
-            <div class="container">
-                    <div class="navbar-header row">
-                        <!-- タイトルロゴ -->
-                        <a class="navbar-brand text-dark col-md-3 ml-4" href="#"><img border="0" src="img/logo.png" width="180" height="40" alt="img1"></a>
-                        <button id="infoButton" type="button" class="btn btn-primary col-md-2 ml-1">Info</button>
-                        <button id="gamesButton" type="button" class="btn btn-primary col-md-3 ml-1">Games</button>
-                        <button id="productsButton" type="button" class="btn btn-primary col-md-3 ml-1" disabled>Products</button>
-                    </div>
+        .fixed-footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1030;
+            background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-blue)) !important;
+        }
+
+        .game-card {
+            transition: all 0.3s ease;
+            border: none;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-pills .nav-link {
+            transition: all 0.3s ease;
+            border-radius: 25px;
+            padding: 8px 20px;
+        }
+
+        .nav-link.active {
+            background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-blue)) !important;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(158, 180, 255, 0.4);
+        }
+
+        .nav-link:not(.active) {
+            color: #666;
+        }
+
+        .nav-link:hover:not(.active) {
+            background-color: rgba(158, 180, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .social-link {
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+            border-radius: 15px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .badge {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .badge.bg-primary {
+            background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-blue)) !important;
+        }
+
+        .badge.bg-secondary {
+            background-color: #f0f2f5 !important;
+            color: #666 !important;
+        }
+
+        .btn-outline-primary {
+            border-color: var(--pastel-blue);
+            color: var(--pastel-blue);
+            border-radius: 20px;
+            padding: 5px 15px;
+        }
+
+        .btn-outline-primary:hover {
+            background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-blue));
+            border-color: transparent;
+        }
+
+        .card-img-top {
+            border-radius: 15px 15px 0 0;
+        }
+
+        .card {
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-header">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="img/logo.png" alt="PASTEL FOX" height="40" class="me-2">
+            </a>
+            <div class="nav nav-pills">
+                <button class="nav-link active mx-1" data-section="info">Info</button>
+                <button class="nav-link mx-1" data-section="games">Games</button>
             </div>
-        </header>
-        <!-- メインエリア -->
-        <article id="mainArea" style="display:none">
-            <!-- INFO -->
-            <section id="info" class="container bg-white rounded-bottom">
-                <div class="row bg-warning rounded-top">
-                    <div class="col-md-12">
-                        <p class="h2">Info</p>
-                    </div>
-                </div>
-                <div class="row pt-2">
-                    <div class="col-md-8">
-                        <!--プロフィール -->
-                        <section class="container">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    baudoが作成したゲームやコンテンツ等を置いておく場所
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    GitHub
-                                </div>
-                                <div class="col-md-2">
-                                    <a href="https://github.com/kou828">https://github.com/kou828</a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    Twitter
-                                </div>
-                                <div class="col-md-2">
-                                    <a href="https://twitter.com/baudo_pixel">https://twitter.com/baudo_pixel</a>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                    <!-- サイドバー -->
-                    <div class="col-md-4">
-                        <a class="twitter-timeline" data-width="400" data-height="450" href="https://twitter.com/baudo_pixel?ref_src=twsrc%5Etfw">Tweets by baudo_pixel</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+    </nav>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <!-- Info Section -->
+            <section id="info" class="section active">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title mb-4">About</h2>
+                        <p class="text-muted">baudoが作成したゲームやコンテンツ等を置いておく場所</p>
+                        <div class="d-flex gap-4 mt-4">
+                            <a href="https://github.com/kou828" class="text-decoration-none text-dark">
+                                <i class="fab fa-github me-2"></i>GitHub
+                            </a>
+                            <a href="https://twitter.com/baudo_pixel" class="text-decoration-none text-dark">
+                                <i class="fab fa-twitter me-2"></i>Twitter
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- ゲーム -->
-            <section id="games" class="container bg-white rounded-bottom">
-                <div class="row bg-warning rounded-top">
-                    <div class="col-md-12">
-                        <p class="h2">Games</p>
+            <!-- Games Section -->
+            <section id="games" class="section">
+                <div class="row g-4">
+                    <!-- ずんだWAR -->
+                    <div class="col-md-6">
+                        <div class="card shadow-sm game-card h-100">
+                            <img src="img/zundaWarImage.png" class="card-img-top" alt="ずんだWAR" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex justify-content-between align-items-center">
+                                    Speed Porker
+                                    <a href="https://baudo.itch.io/zunda-war" class="btn btn-sm btn-outline-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> Play
+                                    </a>
+                                </h5>
+                                <p class="card-text">Unity1週間ゲームジャム お題「つながる」の投稿作品です。</p>
+                                <div class="mt-3">
+                                    <span class="badge bg-primary me-2">カードゲーム</span>
+                                    <span class="badge bg-secondary">2019/03/11 〜 2018/03/31</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <hr class="col-md-11" style="border: 0; border-bottom: 1px dashed #ccc; background: #999;">
-                </div>
-                <!--  -->
-                <div class="row">
-                    <!-- 仕切り線 -->
-                    <div class="col-md-3">
-                        <div class="col-md-3"><img border="0" src="img/zundaWarImage.png" width="220" height="130" alt="イラスト1"></div>
+
+                    <!-- ずんだWAR -->
+                    <div class="col-md-6">
+                        <div class="card shadow-sm game-card h-100">
+                            <img src="img/zundaWarImage.png" class="card-img-top" alt="ずんだWAR" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex justify-content-between align-items-center">
+                                    ICE RUNNER
+                                    <a href="https://baudo.itch.io/zunda-war" class="btn btn-sm btn-outline-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> Play
+                                    </a>
+                                </h5>
+                                <p class="card-text">Unity1週間ゲームジャム 「さがす」の投稿作品です。</p>
+                                <div class="mt-3">
+                                    <span class="badge bg-primary me-2">パズル</span>
+                                    <span class="badge bg-secondary">2019/10/14 〜 2018/11/03</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- ずんだWAR -->
-                    <div class="col-md-9">
-                        <div class="row pt-2">
-                            <div class="col-md-2">Title</div>
-                            <div class="col-md-2">ずんだWAR</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">URL</div>
-                            <div class="col-md-7"><a href="https://baudo.itch.io/zunda-war" target="_blank">https://baudo.itch.io/zunda-war</a></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">Overview</div>
-                            <div class="col-md-7"><a href="https://itch.io/jam/voicegamejam2" target="_blank">VOICEゲームジャム2</a>提出作品です。</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">ジャンル</div>
-                            <div class="col-md-7">シミュレーション</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">製作期間</div>
-                            <div class="col-md-7">2018/12/21 〜 2018/12/30</div>
+                    <div class="col-md-6">
+                        <div class="card shadow-sm game-card h-100">
+                            <img src="img/zundaWarImage.png" class="card-img-top" alt="ずんだWAR" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex justify-content-between align-items-center">
+                                    ずんだWAR
+                                    <a href="https://baudo.itch.io/zunda-war" class="btn btn-sm btn-outline-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> Play
+                                    </a>
+                                </h5>
+                                <p class="card-text">VOICEゲームジャム2提出作品です。</p>
+                                <div class="mt-3">
+                                    <span class="badge bg-primary me-2">シミュレーション</span>
+                                    <span class="badge bg-secondary">2018/12/21 〜 2018/12/30</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- 仕切り線 -->
-                <div class="row">
-                    <hr class="col-md-11" style="border: 0; border-bottom: 1px dashed #ccc; background: #999;">
-                </div>
-                <!-- テンパズッ！！ -->
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="col-md-3"><img border="0" src="img/tenpaz.png" width="220" height="130" alt="イラスト1"></div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="row pt-2">
-                            <div class="col-md-2">Title</div>
-                            <div class="col-md-7">テンパズッ！！</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">URL</div>
-                            <div class="col-md-7"><a href="https://unityroom.com/games/tenpaz" target="_blank">https://unityroom.com/games/tenpaz</a></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">Overview</div>
-                            <div class="col-md-7"><a href="https://unityroom.com/unity1weeks/11" target="_blank">第10回 Unity1週間ゲームジャム</a>提出作品です。</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">ジャンル</div>
-                            <div class="col-md-7">パズル</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">製作期間</div>
-                            <div class="col-md-7">2018/11/19 〜 2018/11/25</div>
+
+                    <!-- テンパズッ！！ -->
+                    <div class="col-md-6">
+                        <div class="card shadow-sm game-card h-100">
+                            <img src="img/tenpaz.png" class="card-img-top" alt="テンパズッ！！" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex justify-content-between align-items-center">
+                                    テンパズッ！！
+                                    <a href="https://unityroom.com/games/tenpaz" class="btn btn-sm btn-outline-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> Play
+                                    </a>
+                                </h5>
+                                <p class="card-text">第10回 Unity1週間ゲームジャム提出作品です。</p>
+                                <div class="mt-3">
+                                    <span class="badge bg-primary me-2">パズル</span>
+                                    <span class="badge bg-secondary">2018/11/19 〜 2018/11/25</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- 仕切り線 -->
-                <div class="row">
-                    <hr class="col-md-11" style="border: 0; border-bottom: 1px dashed #ccc; background: #999;">
-                </div>
-                <!-- きずなあかりのおおぐいきょうそう！-->
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="col-md-3"><img border="0" src="img/akariOgui.png" width="220" height="130" alt="イラスト1"></div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="row pt-2">
-                            <div class="col-md-2">Title</div>
-                            <div class="col-md-7">きずなあかりのおおぐいきょうそう！</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">URL</div>
-                            <div class="col-md-7"><a href="https://baudo.itch.io/akari-ogui" target="_blank">https://baudo.itch.io/akari-ogui</a></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">Overview</div>
-                            <div class="col-md-7"><a href="https://itch.io/jam/voiceroid-game-jam" target="_blank">ボイロゲームジャム</a>提出作品です。</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">ジャンル</div>
-                            <div class="col-md-7">アクション</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">製作期間</div>
-                            <div class="col-md-7">2018/10/14 〜 2018/10/28</div>
+
+                    <!-- きずなあかりのおおぐいきょうそう！ -->
+                    <div class="col-md-6">
+                        <div class="card shadow-sm game-card h-100">
+                            <img src="img/akariOgui.png" class="card-img-top" alt="きずなあかりのおおぐいきょうそう！" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex justify-content-between align-items-center">
+                                    きずなあかりのおおぐいきょうそう！
+                                    <a href="https://baudo.itch.io/akari-ogui" class="btn btn-sm btn-outline-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> Play
+                                    </a>
+                                </h5>
+                                <p class="card-text">ボイロゲームジャム提出作品です。</p>
+                                <div class="mt-3">
+                                    <span class="badge bg-primary me-2">アクション</span>
+                                    <span class="badge bg-secondary">2018/10/14 〜 2018/10/28</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- 仕切り線 -->
-                <div class="row">
-                    <hr class="col-md-11" style="border: 0; border-bottom: 1px dashed #ccc; background: #999;">
-                </div>
-                <!-- Fire Runner -->
-                <div class="row">
-                    <!-- 画像 -->
-                    <div class="col-md-3">
-                        <div class="col-md-3"><img border="0" src="img/fireRunner.png" width="220" height="130" alt="イラスト1"></div>
-                    </div>
-                    <!-- text -->
-                    <div class="col-md-9">
-                        <div class="row pt-2">
-                            <div class="col-md-2">Title</div>
-                            <div class="col-md-2">FireRunner</div>
-                        </div> 
-                        <div class="row">
-                            <div class="col-md-2">URL</div>
-                            <div class="col-md-7"><a href="https://unityroom.com/games/fire_runner" target="_blank">https://unityroom.com/games/fire_runner</a></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">Overview</div>
-                            <div class="col-md-7">初制作のゲーム。<a href="https://unityroom.com/unity1weeks/10" target="_blank">第9回 Unity1週間ゲームジャム</a>提出作品です。</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">ジャンル</div>
-                            <div class="col-md-7">2D横スクロールアクション</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">製作期間</div>
-                            <div class="col-md-7">2018/09/03 〜 2018/09/09</div>
+
+                    <!-- Fire Runner -->
+                    <div class="col-md-6">
+                        <div class="card shadow-sm game-card h-100">
+                            <img src="img/fireRunner.png" class="card-img-top" alt="Fire Runner" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex justify-content-between align-items-center">
+                                    Fire Runner
+                                    <a href="https://unityroom.com/games/fire_runner" class="btn btn-sm btn-outline-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> Play
+                                    </a>
+                                </h5>
+                                <p class="card-text">初制作のゲーム。第9回 Unity1週間ゲームジャム提出作品です。</p>
+                                <div class="mt-3">
+                                    <span class="badge bg-primary me-2">2D横スクロールアクション</span>
+                                    <span class="badge bg-secondary">2018/09/03 〜 2018/09/09</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- 仕切り線 -->
-                <div class="row">
-                    <hr class="col-md-11" style="border: 0; border-bottom: 1px dashed #ccc; background: #999;">
                 </div>
             </section>
-        </article>　
-        <footer class="fixed-bottom bg-secondary">
-            <div class="text-white text-center">baudo's Warehouse</div>
-        </footer>
-        <script src="js/script.js"></script>
-    </body>
+        </div>
+    </div>
+
+    <footer class="fixed-footer">
+        <div class="container">
+            <div class="footer-content">
+                <span class="footer-text">baudo's Warehouse</span>
+                <div class="footer-links d-flex gap-3">
+                    <a href="https://github.com/kou828" class="text-white opacity-75 hover:opacity-100">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://twitter.com/baudo_pixel" class="text-white opacity-75 hover:opacity-100">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    // Update nav links
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Update sections
+                    const targetSection = this.getAttribute('data-section');
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetSection) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
 </html>
