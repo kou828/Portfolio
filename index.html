@@ -49,6 +49,9 @@
             width: 100%;
             z-index: 1030;
             background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-blue)) !important;
+            padding: 0.75rem 0;  /* パディングを少し小さく */
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         .game-card {
@@ -218,14 +221,19 @@
             <!-- Games Section -->
             <section id="games" class="section">
                 <div class="row g-4">
-                    <!-- ずんだWAR -->
+                    <!-- Speed Porker -->
                     <div class="col-md-6">
                         <div class="card shadow-sm game-card h-100">
-                            <img src="img/zundaWarImage.png" class="card-img-top" alt="ずんだWAR" style="height: 200px; object-fit: cover;">
+                            <div class="card-img-top d-flex align-items-center justify-content-center bg-light" style="height: 200px;">
+                                <div class="text-center text-muted">
+                                    <i class="fas fa-image fa-3x mb-3"></i>
+                                    <h6>No Image</h6>
+                                </div>
+                            </div>
                             <div class="card-body">
                                 <h5 class="card-title d-flex justify-content-between align-items-center">
                                     Speed Porker
-                                    <a href="https://baudo.itch.io/zunda-war" class="btn btn-sm btn-outline-primary" target="_blank">
+                                    <a href="https://unityroom.com/games/speedporker" class="btn btn-sm btn-outline-primary" target="_blank">
                                         <i class="fas fa-external-link-alt"></i> Play
                                     </a>
                                 </h5>
@@ -238,14 +246,19 @@
                         </div>
                     </div>
 
-                    <!-- ずんだWAR -->
+                    <!-- ICE RUNNER -->
                     <div class="col-md-6">
                         <div class="card shadow-sm game-card h-100">
-                            <img src="img/zundaWarImage.png" class="card-img-top" alt="ずんだWAR" style="height: 200px; object-fit: cover;">
+                            <div class="card-img-top d-flex align-items-center justify-content-center bg-light" style="height: 200px;">
+                                <div class="text-center text-muted">
+                                    <i class="fas fa-image fa-3x mb-3"></i>
+                                    <h6>No Image</h6>
+                                </div>
+                            </div>
                             <div class="card-body">
                                 <h5 class="card-title d-flex justify-content-between align-items-center">
                                     ICE RUNNER
-                                    <a href="https://baudo.itch.io/zunda-war" class="btn btn-sm btn-outline-primary" target="_blank">
+                                    <a href="https://unityroom.com/games/ice-runner" class="btn btn-sm btn-outline-primary" target="_blank">
                                         <i class="fas fa-external-link-alt"></i> Play
                                     </a>
                                 </h5>
@@ -341,18 +354,17 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="fixed-footer">
         <div class="container">
-            <div class="footer-content">
-                <span class="footer-text">baudo's Warehouse</span>
-                <div class="footer-links d-flex gap-3">
-                    <a href="https://github.com/kou828" class="text-white opacity-75 hover:opacity-100">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://twitter.com/baudo_pixel" class="text-white opacity-75 hover:opacity-100">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </div>
+            <div class="d-flex justify-content-center align-items-center gap-3">
+                <a href="https://github.com/kou828" class="text-white opacity-75 hover:opacity-100">
+                    <i class="fab fa-github"></i>
+                </a>
+                <span class="text-white opacity-90">baudo's Warehouse</span>
+                <a href="https://twitter.com/baudo_pixel" class="text-white opacity-75 hover:opacity-100">
+                    <i class="fab fa-twitter"></i>
+                </a>
             </div>
         </div>
     </footer>
