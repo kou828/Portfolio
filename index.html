@@ -40,7 +40,7 @@
         body {
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
             min-height: 100vh;
-            padding-top: 76px;
+            padding-top: 60px; /* 76pxから60pxに減らす */
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
 
@@ -48,15 +48,36 @@
             background: rgba(255, 255, 255, 0.9) !important;
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0; /* パディングを減らす */
         }
 
         .nav-link {
             position: relative;
-            padding: 0.5rem 1rem;
+            padding: 0.35rem 0.75rem; /* パディングを小さくする */
             transition: var(--transition-speed);
             border-radius: 8px;
         }
 
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem; /* ギャップを小さくする */
+            min-width: 200px;
+        }
+
+        .navbar-brand img {
+            height: 35px; /* 画像サイズを40pxから35pxに縮小 */
+            width: auto;
+            transition: var(--transition-speed);
+        }
+
+        .navbar-brand span {
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
         .nav-link.active {
             background: var(--primary-gradient);
             color: white !important;
@@ -186,14 +207,15 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* フッターの改善 */
+        /* フッターのスタイルを更新 */
         .footer {
             background: var(--primary-gradient);
-            padding: 1rem 0;
+            padding: 0.5rem 0;
             position: fixed;
             bottom: 0;
             width: 100%;
             color: white;
+            font-size: 0.9rem;
         }
 
         .footer a {
@@ -205,6 +227,19 @@
         .footer a:hover {
             opacity: 1;
         }
+
+        .footer .social-icons {
+            line-height: 1; /* 行の高さを最小にする */
+        }
+
+        .footer .social-icons a {
+            padding: 0.25rem; /* アイコンのパディングも小さくする */
+        }
+
+        /* フッターの上のコンテンツにマージンを追加 */
+        .container.py-4 {
+            margin-bottom: 40px;
+        }
     </style>
 </head>
 
@@ -213,7 +248,7 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="img/logo.png" alt="PASTEL FOX" height="40" class="me-2">
+                <img src="img/logo.svg" alt="PASTEL FOX" height="40" class="me-2">
                 <span class="font-weight-bold">PASTEL FOX</span>
             </a>
             <div class="nav nav-pills">

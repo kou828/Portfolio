@@ -1,0 +1,29 @@
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Tails Group -->
+  <g transform="translate(30, 115)">
+    <path d="M10,0 Q30,-80 50,0" stroke="#FFB6C1" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M30,0 Q50,-90 70,0" stroke="#B0C4DE" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M50,0 Q70,-80 90,0" stroke="#F4D03F" stroke-width="12" fill="none" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Text "PASTEL" with rounded font -->
+  <g transform="translate(140, 90)">
+    <text font-family="Verdana, Arial, sans-serif" font-size="48" font-weight="bold" stroke="#999999" stroke-width="2">
+      <tspan fill="#FFB6C1">P</tspan>
+      <tspan x="35" fill="#FFB6C1">A</tspan>
+      <tspan x="70" fill="#FFB6C1">S</tspan>
+      <tspan x="100" fill="#B0C4DE">T</tspan>
+      <tspan x="130" fill="#B0C4DE">E</tspan>
+      <tspan x="160" fill="#F4D03F">L</tspan>
+    </text>
+  </g>
+  
+  <!-- Text "FOX" with rounded font -->
+  <g transform="translate(140, 140)">
+    <text font-family="Verdana, Arial, sans-serif" font-size="48" font-weight="bold" stroke="#999999" stroke-width="2">
+      <tspan fill="#FFB6C1">F</tspan>
+      <tspan x="30" fill="#B0C4DE">O</tspan>
+      <tspan x="65" fill="#F4D03F">X</tspan>
+    </text>
+  </g>
+</svg>
