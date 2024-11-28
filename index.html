@@ -240,6 +240,97 @@
         .container.py-4 {
             margin-bottom: 40px;
         }
+
+        .skill-category {
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-badge {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            transform: translateY(-2px);
+        }
+
+        .social-link {
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            background: var(--primary-gradient);
+            color: white !important;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .profile-badge {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-badge:hover {
+            transform: translateY(-2px);
+        }
+
+        .badge-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-gradient);
+            border-radius: 8px;
+            color: white;
+        }
+
+        .role-badge {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .role-badge:hover {
+            transform: translateY(-2px);
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-2px);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
     </style>
 </head>
 
@@ -261,9 +352,6 @@
                 <button class="nav-link mx-1" data-section="programs">
                     <i class="fas fa-code me-2"></i>Programs
                 </button>
-                <button class="nav-link mx-1" data-section="achievements">
-                    <i class="fas fa-trophy me-2"></i>Achievements
-                </button>
                 <button class="nav-link mx-1" data-section="environment">
                     <i class="fas fa-laptop-code me-2"></i>Environment
                 </button>
@@ -273,75 +361,195 @@
 
     <!-- メインコンテンツ -->
     <div class="container py-4">
-        <!-- Info Section -->
         <section id="info" class="section active animate-fadeInUp">
             <div class="card shadow-sm">
-                <div class="card-body p-4">
-                    <div class="row align-items-center mb-4">
-                        <div class="col-md-8">
-                            <h2 class="card-title mb-3">About Me</h2>
-                            <p class="lead text-muted">
-                                ゲーム開発エンジニア / バックエンドエンジニア
-                            </p>
-                            <p>
-                                2018年からUnityを使用したゲーム開発に携わり、個人開発やGame Jamへの参加を通じて経験を積んでいます。
+                <div class="card-body p-5">
+                    <!-- プロフィールヘッダー部分 -->
+                    <div class="mb-5">
+                        <div class="d-flex flex-column align-items-start">
+                            <!-- タイトルと連絡先のコンテナ -->
+                            <div class="position-relative w-100 mb-4">
+                                <div class="d-flex justify-content-between align-items-start w-100">
+                                    <h2 class="display-6 fw-bold mb-0 position-relative">
+                                        <span class="position-relative">
+                                            About Me
+                                            <div class="position-absolute start-0 bottom-0" style="height: 4px; width: 60px; background: var(--primary-gradient)"></div>
+                                        </span>
+                                    </h2>
+                                    <div class="d-flex gap-2">
+                                        <a href="https://github.com/kou828" class="contact-link" title="GitHub">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="https://bsky.app/profile/kou828.bsky.social" class="contact-link" title="Bluesky">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <!-- プロフィール情報 -->
+                            <div class="mt-3 d-inline-flex align-items-center gap-3">
+                                <div class="profile-badge d-flex align-items-center">
+                                    <div class="badge-icon me-2">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="badge-content">
+                                        <div class="text-muted small">Handle Name</div>
+                                        <div class="fw-bold">はにわ</div>
+                                    </div>
+                                </div>
+                                <div class="profile-badge d-flex align-items-center">
+                                    <div class="badge-icon me-2">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <div class="badge-content">
+                                        <div class="text-muted small">Experience</div>
+                                        <div class="fw-bold">10+ Years</div>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <!-- ロール表示部分 -->
+                            <div class="d-inline-flex flex-wrap gap-2 mb-4 mt-4">
+                                <span class="role-badge">
+                                    <i class="fas fa-laptop-code me-2"></i>フロントエンド
+                                </span>
+                                <span class="role-badge">
+                                    <i class="fas fa-server me-2"></i>バックエンド
+                                </span>
+                                <span class="role-badge">
+                                    <i class="fas fa-network-wired me-2"></i>基盤構築
+                                </span>
+                                <span class="role-badge">
+                                    <i class="fas fa-gamepad me-2"></i>ゲーム開発
+                                </span>
+                            </div>
+                    
+                            <!-- 自己紹介文 -->
+                            <p class="lead mb-0" style="line-height: 1.8">
+                                <div>2013年からプログラミングを始め、10年以上の開発経験を積んできました。</div>
+                                <div>現在は本業でフロント・バックエンドエンジニアとして従事し、大規模Webアプリケーションの設計から実装まで一貫して担当しています。</div>
+                                <div>趣味としてC#やPythonを使用した個人開発、Unityを使用したゲーム開発サーバ構築等に取り組み、ジャンルを問わず様々なプロジェクトに挑戦しています。</div>
                             </p>
                         </div>
                     </div>
-
-                    <div class="mb-4">
-                        <h5 class="border-bottom pb-2">Technical Skills</h5>
-                        <div class="skill-badges mt-3">
-                            <span class="skill-badge">Unity</span>
-                            <span class="skill-badge">C#</span>
-                            <span class="skill-badge">JavaScript</span>
-                            <span class="skill-badge">Python</span>
-                            <span class="skill-badge">Git</span>
+        
+                    <!-- Technical Skills セクション -->
+                    <div class="mb-5">
+                        <h3 class="h5 d-flex align-items-center mb-4">
+                            <i class="fas fa-code me-2"></i>Technical Skills
+                        </h3>
+                        
+                        <div class="skills-container">
+                            <!-- フロントエンド -->
+                            <div class="skill-category p-4 bg-light rounded-3 mb-4">
+                                <h6 class="d-flex align-items-center mb-3">
+                                    <i class="fas fa-laptop-code me-2"></i>フロントエンド
+                                </h6>
+                                <div class="skill-badges d-flex flex-wrap gap-2">
+                                    <span class="skill-badge">JavaScript</span>
+                                    <span class="skill-badge">HTML5</span>
+                                    <span class="skill-badge">CSS3</span>
+                                </div>
+                            </div>
+        
+                            <!-- バックエンド -->
+                            <div class="skill-category p-4 bg-light rounded-3 mb-4">
+                                <h6 class="d-flex align-items-center mb-3">
+                                    <i class="fas fa-server me-2"></i>バックエンド
+                                </h6>
+                                <div class="skill-badges d-flex flex-wrap gap-2">
+                                    <span class="skill-badge">C#</span>
+                                    <span class="skill-badge">Java</span>
+                                    <span class="skill-badge">PHP</span>
+                                    <span class="skill-badge">Cake PHP</span>
+                                    <span class="skill-badge">.NET</span>
+                                    <span class="skill-badge">Python</span>
+                                    <span class="skill-badge">Node.js</span>
+                                    <span class="skill-badge">SQL Server</span>
+                                    <span class="skill-badge">Oracle</span>
+                                </div>
+                            </div>
+        
+                            <!-- 2段組みのスキル -->
+                            <div class="row g-4">
+                                <!-- ゲーム開発 -->
+                                <div class="col-md-6">
+                                    <div class="skill-category p-4 bg-light rounded-3 h-100">
+                                        <h6 class="d-flex align-items-center mb-3">
+                                            <i class="fas fa-gamepad me-2"></i>ゲーム開発
+                                        </h6>
+                                        <div class="skill-badges d-flex flex-wrap gap-2">
+                                            <span class="skill-badge">Unity</span>
+                                            <span class="skill-badge">C#</span>
+                                            <span class="skill-badge">2D開発</span>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <!-- 開発ツール -->
+                                <div class="col-md-6">
+                                    <div class="skill-category p-4 bg-light rounded-3 h-100">
+                                        <h6 class="d-flex align-items-center mb-3">
+                                            <i class="fas fa-tools me-2"></i>開発ツール・その他
+                                        </h6>
+                                        <div class="skill-badges d-flex flex-wrap gap-2">
+                                            <span class="skill-badge">Git</span>
+                                            <span class="skill-badge">Docker</span>
+                                            <span class="skill-badge">AWS</span>
+                                            <span class="skill-badge">Microsoft Azure</span>
+                                            <span class="skill-badge">Oracle Cloud</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
+        
+                    <!-- Experience & Interests -->
                     <div class="row g-4">
                         <div class="col-md-6">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <i class="fas fa-code-branch me-2"></i>Development Experience
-                                    </h5>
-                                    <ul class="list-unstyled">
-                                        <li class="mb-2">• Unity1週間ゲームジャムに複数回参加</li>
-                                        <li class="mb-2">• オリジナルゲームの個人開発</li>
-                                        <li>• WebアプリケーションのバックエンドAPI開発</li>
-                                    </ul>
-                                </div>
+                            <div class="p-4 bg-light rounded-3 h-100">
+                                <h5 class="d-flex align-items-center mb-4">
+                                    <i class="fas fa-code-branch me-2"></i>Development Experience
+                                </h5>
+                                <ul class="list-unstyled mb-0">
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check-circle me-2 text-primary"></i>
+                                        フルスタックWebアプリケーション開発
+                                    </li>
+                                    <li class="d-flex align-items-center">
+                                        <i class="fas fa-check-circle me-2 text-primary"></i>
+                                        ゲームジャムに複数回参加
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <i class="fas fa-lightbulb me-2"></i>Interests
-                                    </h5>
-                                    <p>ゲーム開発、WebGL、3Dグラフィックス、パフォーマンス最適化に興味があり、
-                                        特にインタラクティブなWeb体験の創造に関心を持っています。</p>
-                                </div>
+                            <div class="p-4 bg-light rounded-3 h-100">
+                                <h5 class="d-flex align-items-center mb-4">
+                                    <i class="fas fa-lightbulb me-2"></i>Interests & Focus
+                                </h5>
+                                <ul class="list-unstyled mb-0">
+                                    <li class="d-flex align-items-start mb-3">
+                                        <i class="fas fa-arrow-right me-2 mt-1 text-primary"></i>
+                                        <span>インタラクティブなWeb体験の創造</span>
+                                    </li>
+                                    <li class="d-flex align-items-start mb-3">
+                                        <i class="fas fa-arrow-right me-2 mt-1 text-primary"></i>
+                                        <span>アジャイル開発とDevOpsによる迅速なデリバリー</span>
+                                    </li>
+                                    <li class="d-flex align-items-start">
+                                        <i class="fas fa-arrow-right me-2 mt-1 text-primary"></i>
+                                        <span>新しい技術トレンドのキャッチアップ</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="text-center mt-4">
-                        <a href="https://github.com/kou828" class="social-link">
-                            <i class="fab fa-github me-2"></i>GitHub
-                        </a>
-                        <a href="https://bsky.app/profile/kou828.bsky.social" class="social-link">
-                            <i class="fab fa-twitter me-2"></i>Bluesky
-                        </a>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- 他のセクションも同様に更新 -->
-        <!-- Games Section -->
         <!-- Games Section -->
         <section id="games" class="section">
             <div class="row g-4">
@@ -494,18 +702,6 @@
                 <div class="card-body text-center py-5">
                     <i class="fas fa-code fa-4x mb-3 text-primary"></i>
                     <h3>Coming Soon</h3>
-                    <p class="text-muted">このセクションは現在準備中です</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- その他のセクション -->
-        <!-- Achievements Section -->
-        <section id="achievements" class="section">
-            <div class="card shadow-sm">
-                <div class="card-body text-center py-5">
-                    <i class="fas fa-trophy fa-4x mb-3 text-muted"></i>
-                    <h3 class="text-muted">Coming Soon</h3>
                     <p class="text-muted">このセクションは現在準備中です</p>
                 </div>
             </div>
