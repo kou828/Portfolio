@@ -12,281 +12,262 @@
 
     <style>
         :root {
-            --primary-gradient: linear-gradient(135deg, #FF9E9E, #9EB4FF);
-            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --hover-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+            --primary-color: #2a3843;
+            --secondary-color-1: #f2088a;
+            --secondary-color-2: #ff096c;
+            --primary-gradient: linear-gradient(135deg, var(--secondary-color-1), var(--secondary-color-2));
+            --card-shadow: 0 4px 6px rgba(42, 56, 67, 0.15);
+            --hover-shadow: 0 8px 15px rgba(42, 56, 67, 0.2);
             --transition-speed: 0.3s;
+            --text-color: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.6);
         }
-
+    
         /* モダンなスクロールバーのスタイル */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
         }
-
+    
         ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: var(--primary-color);
         }
-
+    
         ::-webkit-scrollbar-thumb {
-            background: #888;
+            background: var(--secondary-color-1);
             border-radius: 4px;
         }
-
+    
         ::-webkit-scrollbar-thumb:hover {
-            background: #555;
+            background: var(--secondary-color-2);
         }
-
+    
+        /* 基本スタイル */
         body {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            background: var(--primary-color);
             min-height: 100vh;
-            padding-top: 60px; /* 76pxから60pxに減らす */
+            padding-top: 60px;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-color);
         }
-
+    
+        /* テキストカラーの全体設定 */
+        body, .card, .card-body, .nav-link, .profile-badge, 
+        .skill-badge, .social-link, .contact-link, .role-badge,
+        .list-unstyled, .card-title, .text-muted, h1, h2, h3, h4, h5, h6,
+        .lead, p, span, li, .badge {
+            color: var(--text-color);
+        }
+    
+        /* ナビゲーションバー */
         .navbar {
-            background: rgba(255, 255, 255, 0.9) !important;
+            background: rgba(42, 56, 67, 0.95) !important;
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            padding: 0.5rem 0; /* パディングを減らす */
+            border-bottom: 1px solid rgba(242, 8, 138, 0.2);
+            padding: 0.5rem 0;
         }
-
+    
         .nav-link {
             position: relative;
-            padding: 0.35rem 0.75rem; /* パディングを小さくする */
+            padding: 0.35rem 0.75rem;
             transition: var(--transition-speed);
             border-radius: 8px;
+            color: var(--text-color) !important;
         }
-
+    
+        /* 新しいタイトルスタイル */
         .navbar-brand {
             display: flex;
             align-items: center;
-            gap: 0.75rem; /* ギャップを小さくする */
+            gap: 0.75rem;
             min-width: 200px;
+            position: relative;
+            padding: 0.5rem 0;
         }
-
+    
         .navbar-brand img {
-            height: 35px; /* 画像サイズを40pxから35pxに縮小 */
+            height: 40px;
             width: auto;
             transition: var(--transition-speed);
+            filter: drop-shadow(0 0 8px rgba(242, 8, 138, 0.3));
         }
-
+    
+        .navbar-brand:hover img {
+            transform: scale(1.05);
+        }
+    
         .navbar-brand span {
-            font-size: 1.5rem;
-            font-weight: 600;
-            background: var(--primary-gradient);
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            background: linear-gradient(
+                45deg,
+                var(--secondary-color-1) 0%,
+                var(--secondary-color-2) 51%,
+                var(--secondary-color-1) 100%
+            );
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: shimmer 3s ease-in-out infinite;
+            padding: 0.2rem 0;
         }
+    
+        .navbar-brand span::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease-in-out;
+        }
+    
+        .navbar-brand:hover span::after {
+            width: 100%;
+        }
+    
+        @keyframes shimmer {
+            0% {
+                background-position: 0% center;
+            }
+            50% {
+                background-position: 100% center;
+            }
+            100% {
+                background-position: 0% center;
+            }
+        }
+    
         .nav-link.active {
             background: var(--primary-gradient);
-            color: white !important;
+            color: var(--text-color) !important;
         }
-
+    
         .nav-link:not(.active):hover {
-            background: rgba(158, 180, 255, 0.1);
-            transform: translateY(-2px);
+            background: rgba(242, 8, 138, 0.1);
         }
-
+    
+        /* カードスタイル */
         .card {
             border: none;
             border-radius: 12px;
-            background: white;
+            background: rgba(42, 56, 67, 0.8);
+            border: 1px solid rgba(242, 8, 138, 0.2);
             box-shadow: var(--card-shadow);
             transition: var(--transition-speed);
             overflow: hidden;
         }
-
+    
         .card:hover {
             transform: translateY(-5px);
             box-shadow: var(--hover-shadow);
         }
-
+    
+        .card * {
+            color: var(--text-color);
+        }
+    
         .game-card .card-img-top {
             height: 200px;
             object-fit: cover;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
+            border-bottom: 1px solid rgba(242, 8, 138, 0.2);
         }
-
+    
+        /* バッジスタイル */
         .badge {
             padding: 8px 15px;
             border-radius: 20px;
             font-weight: 500;
             transition: var(--transition-speed);
+            color: var(--text-color) !important;
         }
-
+    
         .badge.bg-primary {
             background: var(--primary-gradient) !important;
         }
-
+    
+        /* ソーシャルリンク */
         .social-link {
             display: inline-flex;
             align-items: center;
             padding: 8px 16px;
             border-radius: 8px;
-            background: white;
-            color: #333;
+            background: var(--primary-gradient);
             text-decoration: none;
             transition: var(--transition-speed);
             margin: 0 8px;
-            box-shadow: var(--card-shadow);
+            color: var(--text-color) !important;
         }
-
+    
         .social-link:hover {
             transform: translateY(-2px);
             box-shadow: var(--hover-shadow);
-            color: #333;
         }
-
+    
+        /* スキルバッジ */
         .skill-badge {
             display: inline-block;
             padding: 8px 16px;
             border-radius: 20px;
             background: var(--primary-gradient);
-            color: white;
             margin: 4px;
             font-size: 0.9rem;
             transition: var(--transition-speed);
         }
-
+    
         .skill-badge:hover {
             transform: translateY(-2px);
             box-shadow: var(--hover-shadow);
         }
-
+    
+        /* セクションアニメーション */
         .section {
             opacity: 0;
             transform: translateY(20px);
             transition: var(--transition-speed);
             display: none;
         }
-
+    
         .section.active {
             opacity: 1;
             transform: translateY(0);
             display: block;
         }
-
-        /* アニメーション効果 */
+    
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
+    
         .animate-fadeInUp {
             animation: fadeInUp 0.5s ease-out forwards;
         }
-
-        /* 環境セクションの新スタイル */
-        .env-card {
-            height: 100%;
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: var(--transition-speed);
-        }
-
-        .env-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--hover-shadow);
-        }
-
-        .env-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* フッターのスタイルを更新 */
-        .footer {
-            background: var(--primary-gradient);
-            padding: 0.5rem 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            color: white;
-            font-size: 0.9rem;
-        }
-
-        .footer a {
-            color: white;
-            opacity: 0.8;
-            transition: var(--transition-speed);
-        }
-
-        .footer a:hover {
-            opacity: 1;
-        }
-
-        .footer .social-icons {
-            line-height: 1; /* 行の高さを最小にする */
-        }
-
-        .footer .social-icons a {
-            padding: 0.25rem; /* アイコンのパディングも小さくする */
-        }
-
-        /* フッターの上のコンテンツにマージンを追加 */
-        .container.py-4 {
-            margin-bottom: 40px;
-        }
-
-        .skill-category {
-            transition: transform 0.3s ease;
-        }
-        
-        .skill-category:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-badge {
-            background: var(--primary-gradient);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: transform 0.3s ease;
-        }
-
-        .skill-badge:hover {
-            transform: translateY(-2px);
-        }
-
-        .social-link {
-            padding: 0.75rem 1.5rem;
-            border-radius: 30px;
-            background: var(--primary-gradient);
-            color: white !important;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        .social-link:hover {
-            transform: translateY(-2px);
-        }
-
+    
+        /* プロフィールバッジ */
         .profile-badge {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(42, 56, 67, 0.8);
             padding: 0.75rem 1.25rem;
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+            border: 1px solid rgba(242, 8, 138, 0.2);
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-speed);
         }
-
+    
         .profile-badge:hover {
             transform: translateY(-2px);
+            box-shadow: var(--hover-shadow);
         }
-
+    
         .badge-icon {
             width: 32px;
             height: 32px;
@@ -295,24 +276,26 @@
             justify-content: center;
             background: var(--primary-gradient);
             border-radius: 8px;
-            color: white;
+            color: var(--text-color);
         }
-
+    
+        /* ロールバッジ */
         .role-badge {
             background: var(--primary-gradient);
-            color: white;
             padding: 0.5rem 1rem;
             border-radius: 25px;
             font-size: 0.9rem;
             display: inline-flex;
             align-items: center;
-            transition: transform 0.3s ease;
+            transition: var(--transition-speed);
         }
-
+    
         .role-badge:hover {
             transform: translateY(-2px);
+            box-shadow: var(--hover-shadow);
         }
-
+    
+        /* コンタクトリンク */
         .contact-link {
             display: inline-flex;
             align-items: center;
@@ -321,15 +304,135 @@
             height: 40px;
             border-radius: 20px;
             background: var(--primary-gradient);
-            color: white;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: var(--transition-speed);
         }
-
+    
         .contact-link:hover {
             transform: translateY(-2px);
-            color: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: var(--hover-shadow);
+        }
+    
+        /* 環境セクション */
+        .bg-light {
+            background: rgba(42, 56, 67, 0.5) !important;
+        }
+    
+        .text-primary {
+            color: var(--secondary-color-1) !important;
+        }
+    
+        /* ボタンスタイル */
+        .btn-outline-primary {
+            color: var(--text-color);
+            border-color: var(--secondary-color-1);
+            transition: var(--transition-speed);
+        }
+    
+        .btn-outline-primary:hover {
+            background: var(--primary-gradient);
+            border-color: transparent;
+            color: var(--text-color);
+        }
+    
+        /* フッター */
+        .footer {
+            background: var(--primary-gradient);
+            padding: 0.5rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    
+        .footer, .footer a {
+            color: var(--text-color);
+        }
+    
+        .container.py-4 {
+            margin-bottom: 40px;
+        }
+    
+        /* アイコンの基本スタイルをリセット */
+        .fas, .fab, .far {
+            color: inherit;
+        }
+    
+        /* ナビゲーションメニューのアイコン */
+        .nav-link i {
+            color: var(--text-color);
+        }
+    
+        /* Development Experience のチェックマークアイコン */
+        .fas.fa-check-circle {
+            color: var(--secondary-color-2);
+        }
+    
+        /* Interests & Focus の矢印アイコン */
+        .fas.fa-arrow-right {
+            color: var(--secondary-color-1);
+        }
+    
+        /* Environment セクションのアイコン */
+        /* デバイス関連 */
+        .fa-microchip, .fa-memory, .fa-hdd, .fa-desktop {
+            color: var(--secondary-color-2);
+        }
+    
+        /* OS関連 */
+        .fa-apple, .fa-android {
+            color: var(--text-color);
+        }
+    
+        /* 周辺機器関連 */
+        .fa-keyboard, .fa-tablet-alt, .fa-server, .fa-cube {
+            color: var(--secondary-color-1);
+        }
+    
+        /* プロフィールバッジとロールバッジのアイコン */
+        .role-badge i, 
+        .badge-icon i,
+        .profile-badge .badge-icon i {
+            color: var(--text-color);
+        }
+    
+        /* SNSアイコン */
+        .contact-link i,
+        .social-icons i {
+            color: var(--text-color);
+        }
+    
+        /* Technical Skills セクションのアイコン */
+        .skill-category h6 i {
+            color: var(--secondary-color-2);
+        }
+    
+        /* 画像プレースホルダーアイコン */
+        .fa-image {
+            color: var(--text-muted);
+        }
+    
+        /* 外部リンクアイコン */
+        .fa-external-link-alt {
+            color: var(--secondary-color-1);
+        }
+    
+        /* テキストミュート */
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+    
+        /* 境界線 */
+        .border-bottom {
+            border-bottom-color: rgba(242, 8, 138, 0.2) !important;
+        }
+    
+        /* スキルカテゴリー */
+        .skill-category {
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
         }
     </style>
 </head>
@@ -428,7 +531,7 @@
                     
                             <!-- 自己紹介文 -->
                             <p class="lead mb-0" style="line-height: 1.8">
-                                <div>2013年からプログラミングを始め、10年以上の開発経験を積んできました。</div>
+                                <div>2009年からプログラミングを始め、10年以上の開発経験を積んできました。</div>
                                 <div>現在は本業でフロント・バックエンドエンジニアとして従事し、大規模Webアプリケーションの設計から実装まで一貫して担当しています。</div>
                                 <div>趣味としてC#やPythonを使用した個人開発、Unityを使用したゲーム開発サーバ構築等に取り組み、ジャンルを問わず様々なプロジェクトに挑戦しています。</div>
                             </p>
